@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Destinations{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Popular Destinations in Ghana</h1>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/independent arch.jpg') }}" class="card-img-top" alt="Cape Coast Castle" style="height: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Independent Arch</h5>
+                    <p class="card-text">A UNESCO World Heritage Site and a poignant reminder of Ghana's history in the transatlantic slave trade.</p>
+                    <a href="#" class="btn btn-outline-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/kakum national park.jpg') }}" class="card-img-top" alt="Kakum National Park" style="height: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Sea</h5>
+                    <p class="card-text">Experience the rainforest canopy walkway and diverse wildlife in this protected area.</p>
+                    <a href="#" class="btn btn-outline-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/memoria.jpg') }}" class="card-img-top" alt="Elmina Castle">
+                <div class="card-body">
+                    <h5 class="card-title">Memoria</h5>
+                    <p class="card-text">The oldest European building in sub-Saharan Africa, offering guided tours of its historic chambers.</p>
+                    <a href="#" class="btn btn-outline-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/musum.jpg') }}" class="card-img-top" alt="Mole National Park">
+                <div class="card-body">
+                    <h5 class="card-title">Mole National Park</h5>
+                    <p class="card-text">Ghana's largest wildlife refuge, home to elephants, antelopes, and various bird species.</p>
+                    <a href="#" class="btn btn-outline-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/mosic maoque.jpg') }}" class="card-img-top" alt="Akwamu Gorge" style="height: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Mosaic Maoque</h5>
+                    <p class="card-text">A stunning natural formation offering hiking trails and breathtaking views of the Volta River.</p>
+                    <a href="#" class="btn btn-outline-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/elima castle.jpg') }}" class="card-img-top" alt="Aburi Botanical Gardens">
+                <div class="card-body">
+                    <h5 class="card-title">Elima Castle</h5>
+                    <p class="card-text">A peaceful retreat featuring exotic plants, walking trails, and colonial-era buildings.</p>
+                    <a href="#" class="btn btn-outline-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Explore Ghana Blog{% endblock %}
+
+{% block content %}
+<article class="post-detail">
+    <!-- Post Header -->
+    <div class="post-header py-5 text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="d-flex justify-content-center mb-3">
+                        <span class="badge bg-primary me-2">{{ post.category }}</span>
+                        <small class="text-muted">{{ post.date_posted.strftime('%B %d, %Y') }}</small>
+                    </div>
+                    <h1 class="display-4 mb-4">{{ post.title }}</h1>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="{{ post.author.avatar_url }}" 
+                             class="rounded-circle me-3" 
+                             width="48" 
+                             height="48" 
+                             alt="{{ post.author.name }}"
+                             onerror="this.src='https://via.placeholder.com/48'">
+                        <div class="text-start">
+                            <h6 class="mb-0">{{ post.author.name }}</h6>
+                            <small class="text-muted">{{ post.author.role }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Image -->
+    <div class="post-image mb-5">
+        <img src="{{ post.image_url }}" class="img-fluid w-100" alt="{{ post.title }}">
+    </div>
+
+    <!-- Post Content -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Post Body -->
+                <div class="post-content mb-5">
+                    {{ post.content|safe }}
+                </div>
+
+                <!-- Tags -->
+                {% if post.tags %}
+                <div class="post-tags mb-5">
+                    <h5 class="mb-3">Tags</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for tag in post.tags %}
+                        <a href="{{ url_for('blog', tag=tag.name) }}" class="btn btn-sm btn-outline-primary">
+                            {{ tag.name }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Social Share -->
+                <div class="post-share mb-5">
+                    <h5 class="mb-3">Share This Post</h5>
+                    <div class="d-flex gap-2">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.url|urlencode }}" 
+                           class="btn btn-outline-primary" 
+                           target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url={{ request.url|urlencode }}&text={{ post.title|urlencode }}" 
+                           class="btn btn-outline-primary" 
+                           target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.url|urlencode }}&title={{ post.title|urlencode }}" 
+                           class="btn btn-outline-primary" 
+                           target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://wa.me/?text={{ post.title|urlencode }}%20{{ request.url|urlencode }}" 
+                           class="btn btn-outline-primary" 
+                           target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Author Bio -->
+                <div class="author-bio mb-5">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex">
+                                <img src="{{ post.author.avatar_url }}" 
+                                     class="rounded-circle me-4" 
+                                     width="80" 
+                                     height="80" 
+                                     alt="{{ post.author.name }}"
+                                     onerror="this.src='https://via.placeholder.com/80'">
+                                <div>
+                                    <h5 class="mb-2">{{ post.author.name }}</h5>
+                                    <p class="text-muted mb-3">{{ post.author.bio }}</p>
+                                    <div class="social-links">
+                                        {% if post.author.social_links %}
+                                            {% for platform, url in post.author.social_links.items() %}
+                                            <a href="{{ url }}" class="text-muted me-3" target="_blank">
+                                                <i class="fab fa-{{ platform }}"></i>
+                                            </a>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Posts -->
+                {% if related_posts %}
+                <div class="related-posts mb-5">
+                    <h5 class="mb-4">Related Posts</h5>
+                    <div class="row g-4">
+                        {% for related_post in related_posts %}
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="{{ related_post.image_url }}" class="card-img-top" alt="{{ related_post.title }}">
+                                <div class="card-body p-4">
+                                    <h6 class="card-title">{{ related_post.title }}</h6>
+                                    <p class="card-text small">{{ related_post.excerpt }}</p>
+                                    <a href="{{ url_for('post', post_id=related_post.id) }}" class="btn btn-link p-0">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <h5 class="mb-4">Comments ({{ post.comments|length }})</h5>
+                    
+                    {% if current_user.is_authenticated %}
+                    <!-- Comment Form -->
+                    <form method="POST" action="{{ url_for('add_comment', post_id=post.id) }}" class="mb-5">
+                        <div class="mb-3">
+                            <textarea name="content" class="form-control" rows="4" placeholder="Write a comment..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                    </form>
+                    {% else %}
+                    <div class="alert alert-info mb-5">
+                        Please <a href="{{ url_for('login') }}">login</a> to leave a comment.
+                    </div>
+                    {% endif %}
+
+                    <!-- Comments List -->
+                    <div class="comments-list">
+                        {% for comment in post.comments %}
+                        <div class="comment mb-4">
+                            <div class="d-flex">
+                                <img src="{{ comment.author.avatar_url }}" 
+                                     class="rounded-circle me-3" 
+                                     width="48" 
+                                     height="48" 
+                                     alt="{{ comment.author.name }}"
+                                     onerror="this.src='https://via.placeholder.com/48'">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h6 class="mb-0">{{ comment.author.name }}</h6>
+                                        <small class="text-muted">{{ comment.date_posted.strftime('%B %d, %Y') }}</small>
+                                    </div>
+                                    <p class="mb-2">{{ comment.content }}</p>
+                                    {% if current_user.is_authenticated and (current_user.id == comment.author.id or current_user.is_admin) %}
+                                    <div class="comment-actions">
+                                        <button class="btn btn-link btn-sm text-danger p-0" 
+                                                onclick="deleteComment('{{ comment.id }}')">
+                                            Delete
+                                        </button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function deleteComment(commentId) {
+    if (confirm('Are you sure you want to delete this comment?')) {
+        fetch(`/api/comments/${commentId}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                location.reload();
+            } else {
+                alert('Error deleting comment');
+            }
+        });
+    }
+}
+</script>
+{% endblock %} 

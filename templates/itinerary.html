@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Itinerary{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Plan Your Trip</h1>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Create New Itinerary</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="tripName" class="form-label">Trip Name</label>
+                            <input type="text" class="form-control" id="tripName" placeholder="e.g., Ghana Adventure 2025">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="startDate" class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="startDate">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="endDate" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="endDate">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="destinations" class="form-label">Select Destinations</label>
+                            <select class="form-select" id="destinations" multiple>
+                                <option value="accra">Accra</option>
+                                <option value="kumasi">Kumasi</option>
+                                <option value="cape-coast">Cape Coast</option>
+                                <option value="tamale">Tamale</option>
+                                <option value="mole">Mole National Park</option>
+                                <option value="kakum">Kakum National Park</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Itinerary</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Your Itineraries</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Ghana Cultural Tour</h5>
+                                <small class="text-muted">July 1-7, 2025</small>
+                            </div>
+                            <p class="mb-1">Destinations: Accra, Kumasi, Cape Coast</p>
+                            <small>Status: Planning</small>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Nature Adventure</h5>
+                                <small class="text-muted">August 15-20, 2025</small>
+                            </div>
+                            <p class="mb-1">Destinations: Mole National Park, Kakum National Park</p>
+                            <small>Status: Confirmed</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Trip Suggestions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Cultural Heritage Tour</h6>
+                                <small class="text-muted">5 days</small>
+                            </div>
+                            <p class="mb-1">Explore Ghana's rich cultural heritage</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Nature & Wildlife</h6>
+                                <small class="text-muted">7 days</small>
+                            </div>
+                            <p class="mb-1">Discover Ghana's natural wonders</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Beach & Relaxation</h6>
+                                <small class="text-muted">4 days</small>
+                            </div>
+                            <p class="mb-1">Unwind on Ghana's beautiful beaches</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Trip Tips</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Book accommodations in advance</li>
+                        <li class="list-group-item">Check weather conditions</li>
+                        <li class="list-group-item">Plan transportation between cities</li>
+                        <li class="list-group-item">Consider local festivals and events</li>
+                        <li class="list-group-item">Pack appropriate clothing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

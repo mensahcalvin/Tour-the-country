@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Explore Ghana{% endblock %}
+
+{% block content %}
+<div class="hero-section text-center py-5">
+    <h1 class="display-4 mb-4">Welcome to Ghana</h1>
+    <p class="lead mb-4">Discover the rich culture, beautiful landscapes, and warm hospitality of West Africa's hidden gem.</p>
+    <a href="{{ url_for('destinations') }}" class="btn btn-primary btn-lg">Start Exploring</a>
+</div>
+
+<div class="featured-sections py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="https://source.unsplash.com/random/400x300/?ghana,beach" class="card-img-top" alt="Ghana Beach">
+                <div class="card-body">
+                    <h5 class="card-title">Beautiful Beaches</h5>
+                    <p class="card-text">Explore pristine beaches along Ghana's stunning coastline.</p>
+                    <a href="{{ url_for('destinations') }}" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="https://source.unsplash.com/random/400x300/?ghana,culture" class="card-img-top" alt="Ghana Culture">
+                <div class="card-body">
+                    <h5 class="card-title">Rich Culture</h5>
+                    <p class="card-text">Immerse yourself in Ghana's vibrant traditions and festivals.</p>
+                    <a href="{{ url_for('events') }}" class="btn btn-primary">Discover Events</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="https://source.unsplash.com/random/400x300/?ghana,wildlife" class="card-img-top" alt="Ghana Wildlife">
+                <div class="card-body">
+                    <h5 class="card-title">Wildlife & Nature</h5>
+                    <p class="card-text">Experience the diverse wildlife and natural wonders of Ghana.</p>
+                    <a href="{{ url_for('destinations') }}" class="btn btn-primary">Explore Nature</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="why-visit py-5">
+    <h2 class="text-center mb-4">Why Visit Ghana?</h2>
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="text-center">
+                <i class="fas fa-umbrella-beach fa-3x mb-3"></i>
+                <h4>Beautiful Beaches</h4>
+                <p>Stunning coastline with pristine beaches</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="text-center">
+                <i class="fas fa-utensils fa-3x mb-3"></i>
+                <h4>Delicious Food</h4>
+                <p>Experience authentic Ghanaian cuisine</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="text-center">
+                <i class="fas fa-hotel fa-3x mb-3"></i>
+                <h4>Great Accommodations</h4>
+                <p>From luxury resorts to cozy guesthouses</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="text-center">
+                <i class="fas fa-users fa-3x mb-3"></i>
+                <h4>Friendly People</h4>
+                <p>Warm hospitality and welcoming locals</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cta-section text-center py-5">
+    <h2 class="mb-4">Ready to Plan Your Trip?</h2>
+    <p class="lead mb-4">Create your personalized itinerary and start your Ghana adventure today!</p>
+    <a href="{{ url_for('itinerary') }}" class="btn btn-primary btn-lg">Plan Your Trip</a>
+</div>
+{% endblock %} 

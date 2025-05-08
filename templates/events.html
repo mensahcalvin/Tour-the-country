@@ -1,0 +1,412 @@
+{% extends "base.html" %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<div class="container">
+    <marquee behavior="scroll" direction="left">
+        <p>Welcome to Explore Ghana, your ultimate guide to discovering the best of Ghana's destinations, accommodations, transportation, events, and more!</p>
+    </marquee>
+    <!-- Search and Filter Section -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="input-group">
+                <input type="text" class="form-control" id="eventSearch" placeholder="Search events...">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" id="regionFilter">
+                <option value="">All Regions</option>
+                <option value="accra">Accra</option>
+                <option value="cape-coast">Cape Coast</option>
+                <option value="winneba">Winneba</option>
+                <option value="anloga">Anloga</option>
+                <option value="western">Western Region</option>
+            </select>
+        </div>
+    </div>
+
+    <h1 class="mb-4">Cultural Events and Festivals</h1>
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Upcoming Events</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <div class="list-group-item event-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Homowo Festival</h5>
+                                <small class="text-muted">August 15-20, 2025</small>
+                            </div>
+                            <p class="mb-1">A harvest festival celebrated by the Ga people of Accra.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small><i class="fas fa-map-marker-alt me-1"></i>Accra</small>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#homowoModal">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                        <div class="list-group-item event-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Aboakyer Festival</h5>
+                                <small class="text-muted">May 1-5, 2025</small>
+                            </div>
+                            <p class="mb-1">Deer hunting festival of the Effutu people in Winneba.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small><i class="fas fa-map-marker-alt me-1"></i>Winneba</small>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#aboakyerModal">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                        <div class="list-group-item event-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Panafest</h5>
+                                <small class="text-muted">July 25-30, 2025</small>
+                            </div>
+                            <p class="mb-1">Pan African Historical Theatre Festival celebrating African heritage.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small><i class="fas fa-map-marker-alt me-1"></i>Cape Coast</small>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#panafestModal">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">Annual Festivals</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <div class="list-group-item event-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hogbetsotso Festival</h5>
+                                <small class="text-muted">November 1-5, 2025</small>
+                            </div>
+                            <p class="mb-1">Celebration of the migration of the Anlo people.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small><i class="fas fa-map-marker-alt me-1"></i>Anloga</small>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#hogbetsotsoModal">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                        <div class="list-group-item event-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Fetu Afahye</h5>
+                                <small class="text-muted">September 1-7, 2025</small>
+                            </div>
+                            <p class="mb-1">Harvest festival of the people of Cape Coast.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small><i class="fas fa-map-marker-alt me-1"></i>Cape Coast</small>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#fetuModal">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                        <div class="list-group-item event-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Kundum Festival</h5>
+                                <small class="text-muted">August 15-30, 2025</small>
+                            </div>
+                            <p class="mb-1">Harvest festival of the Ahanta and Nzema people.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small><i class="fas fa-map-marker-alt me-1"></i>Western Region</small>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#kundumModal">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Event Calendar</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Event</th>
+                                    <th>Location</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>May 1-5, 2025</td>
+                                    <td>Aboakyer Festival</td>
+                                    <td>Winneba</td>
+                                    <td>Traditional deer hunting festival</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#aboakyerModal">
+                                            Details
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>July 25-30, 2025</td>
+                                    <td>Panafest</td>
+                                    <td>Cape Coast</td>
+                                    <td>Pan African Historical Theatre Festival</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#panafestModal">
+                                            Details
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>August 15-20, 2025</td>
+                                    <td>Homowo Festival</td>
+                                    <td>Accra</td>
+                                    <td>Harvest festival of the Ga people</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#homowoModal">
+                                            Details
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Modals -->
+    <div class="modal fade" id="homowoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Homowo Festival</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ url_for('static', filename='images/events/homowo.jpg') }}" class="img-fluid mb-3" alt="Homowo Festival">
+                    <p><strong>Date:</strong> August 15-20, 2025</p>
+                    <p><strong>Location:</strong> Accra</p>
+                    <p><strong>Description:</strong> A harvest festival celebrated by the Ga people of Accra, featuring traditional dances, music, and the sprinkling of "kpokpoi" (a special dish).</p>
+                    <p><strong>Highlights:</strong></p>
+                    <ul>
+                        <li>Traditional drumming and dancing</li>
+                        <li>Cultural displays</li>
+                        <li>Food fairs</li>
+                        <li>Street processions</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add to Calendar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar modals for other events -->
+    <div class="modal fade" id="aboakyerModal" tabindex="-1">
+        <!-- Modal content for Aboakyer Festival -->
+    </div>
+
+    <div class="modal fade" id="panafestModal" tabindex="-1">
+        <!-- Modal content for Panafest -->
+    </div>
+
+    <div class="modal fade" id="hogbetsotsoModal" tabindex="-1">
+        <!-- Modal content for Hogbetsotso Festival -->
+    </div>
+
+    <div class="modal fade" id="fetuModal" tabindex="-1">
+        <!-- Modal content for Fetu Afahye -->
+    </div>
+
+    <div class="modal fade" id="kundumModal" tabindex="-1">
+        <!-- Modal content for Kundum Festival -->
+    </div>
+
+    <!-- Cultural Images Section -->
+    <h3 class="mt-5">Ghanaian Culture</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        {% for i in range(1, 10) %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/Ghanaian-culture/culture%02d.jpg' % i) }}" 
+                     class="card-img-top" 
+                     alt="Ghanaian Culture {{ i }}"
+                     style="height: 100%; object-fit: cover;">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Food Section -->
+    <h3>Food</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for i in range(1, 10) %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/menu/food%02d.jpg' % i) }}" 
+                     class="card-img-top" 
+                     alt="Ghanaian Food {{ i }}"
+                     style="height: 100%; object-fit: cover;">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+   
+</div>
+
+<style>
+.event-item {
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.event-item:hover {
+    transform: translateX(5px);
+    background-color: #f8f9fa;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.form-control, .form-select {
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+/* New styles for Places to Explore section */
+.place-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.place-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 0.5em 0.8em;
+}
+
+#ghanaMap {
+    border-radius: 10px;
+    overflow: hidden;
+}
+</style>
+
+<script>
+// Search functionality
+document.getElementById('eventSearch').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const events = document.querySelectorAll('.event-item');
+    
+    events.forEach(event => {
+        const title = event.querySelector('h5').textContent.toLowerCase();
+        const description = event.querySelector('p').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+            event.style.display = '';
+        } else {
+            event.style.display = 'none';
+        }
+    });
+});
+
+// Region filter
+document.getElementById('regionFilter').addEventListener('change', function(e) {
+    const region = e.target.value;
+    const events = document.querySelectorAll('.event-item');
+    
+    events.forEach(event => {
+        const location = event.querySelector('small').textContent.toLowerCase();
+        
+        if (region === '' || location.includes(region)) {
+            event.style.display = '';
+        } else {
+            event.style.display = 'none';
+        }
+    });
+});
+
+// New scripts for Places to Explore section
+document.getElementById('placeSearch').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const places = document.querySelectorAll('.place-card');
+    
+    places.forEach(place => {
+        const title = place.querySelector('.card-title').textContent.toLowerCase();
+        const description = place.querySelector('.card-text').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+            place.closest('.col').style.display = '';
+        } else {
+            place.closest('.col').style.display = 'none';
+        }
+    });
+});
+
+document.getElementById('placeTypeFilter').addEventListener('change', function(e) {
+    const type = e.target.value;
+    const places = document.querySelectorAll('.place-card');
+    
+    places.forEach(place => {
+        const badge = place.querySelector('.badge').textContent.toLowerCase();
+        
+        if (type === '' || badge.includes(type)) {
+            place.closest('.col').style.display = '';
+        } else {
+            place.closest('.col').style.display = 'none';
+        }
+    });
+});
+</script>
+{% endblock %} 

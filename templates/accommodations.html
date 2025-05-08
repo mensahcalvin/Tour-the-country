@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+
+{% block title %}Accommodations{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="hero-section text-center py-5 mb-5 bg-secondary rounded">
+        <h1 class="display-4 mb-3">Accommodations in Ghana</h1>
+        <p class="lead">Discover the best accommodations in Ghana with our comprehensive guide</p>
+    </div>
+    
+    <!-- Search Form -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Search Accommodations</h5>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="location" class="form-label">Location</label>
+                                <select class="form-select" id="location" required>
+                                    <option value="" selected disabled>Choose location</option>
+                                    <option>Accra</option>
+                                    <option>Kumasi</option>
+                                    <option>Cape Coast</option>
+                                    <option>Takoradi</option>
+                                    <option>Tamale</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="checkIn" class="form-label">Check-in Date</label>
+                                <input type="date" class="form-control" id="checkIn" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="checkOut" class="form-label">Check-out Date</label>
+                                <input type="date" class="form-control" id="checkOut" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="guests" class="form-label">Number of Guests</label>
+                                <input type="number" class="form-control" id="guests" min="1" value="1" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="roomType" class="form-label">Room Type</label>
+                                <select class="form-select" id="roomType">
+                                    <option value="" selected disabled>Select room type</option>
+                                    <option>Single</option>
+                                    <option>Double</option>
+                                    <option>Suite</option>
+                                    <option>Family</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">Search Accommodations</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accommodation Types -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Luxury Hotels</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Experience world-class hospitality in Ghana's finest hotels.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-primary me-2"></i>Kempinski Hotel Gold Coast City</li>
+                        <li><i class="fas fa-check text-primary me-2"></i>Labadi Beach Hotel</li>
+                        <li><i class="fas fa-check text-primary me-2"></i>Movenpick Ambassador Hotel</li>
+                    </ul>
+                    <p class="card-text"><small class="text-muted">Price Range: $150-$500 per night</small></p>
+                    <a href="#" class="btn btn-outline-primary">View Options</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">Mid-Range Hotels</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Comfortable accommodations at reasonable prices.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i>Best Western Plus</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Holiday Inn Accra Airport</li>
+                        <li><i class="fas fa-check text-success me-2"></i>African Regent Hotel</li>
+                    </ul>
+                    <p class="card-text"><small class="text-muted">Price Range: $80-$150 per night</small></p>
+                    <a href="#" class="btn btn-outline-success">View Options</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-info text-white">
+                    <h5 class="card-title mb-0">Budget Options</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Affordable stays for budget-conscious travelers.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-info me-2"></i>Hostels and Guesthouses</li>
+                        <li><i class="fas fa-check text-info me-2"></i>Local Inns</li>
+                        <li><i class="fas fa-check text-info me-2"></i>Budget Hotels</li>
+                    </ul>
+                    <p class="card-text"><small class="text-muted">Price Range: $20-$80 per night</small></p>
+                    <a href="#" class="btn btn-outline-info">View Options</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Hotels -->
+    <h2 class="text-center mb-4">Featured Hotels</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename='images/hotel-1.jpg') }}" class="card-img-top" alt="Luxury Hotel">
+                <div class="card-body">
+                    <h5 class="card-title">Kempinski Hotel Gold Coast City</h5>
+                    <p class="card-text">Experience luxury at its finest in the heart of Accra. World-class amenities and exceptional service await you.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">From $250/night</span>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename='images/sea.jpg') }}" class="card-img-top" alt="Beach Resort">
+                <div class="card-body">
+                    <h5 class="card-title">Labadi Beach Hotel</h5>
+                    <p class="card-text">Stunning beachfront location with modern amenities and breathtaking ocean views.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">From $180/night</span>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename='images/hotel-4.jpg') }}" class="card-img-top" alt="City Hotel">
+                <div class="card-body">
+                    <h5 class="card-title">Movenpick Ambassador Hotel</h5>
+                    <p class="card-text">Contemporary luxury in the heart of Accra with exceptional dining and business facilities.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">From $200/night</span>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename='images/hotel-5.jpg') }}" class="card-img-top" alt="Boutique Hotel">
+                <div class="card-body">
+                    <h5 class="card-title">African Regent Hotel</h5>
+                    <p class="card-text">A boutique hotel offering personalized service and elegant accommodations in a prime location.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">From $150/night</span>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename='images/hotel-6.jpg') }}" class="card-img-top" alt="Business Hotel">
+                <div class="card-body">
+                    <h5 class="card-title">Holiday Inn Accra Airport</h5>
+                    <p class="card-text">Conveniently located near the airport with modern amenities and excellent business facilities.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">From $120/night</span>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename='images/hotel-7.jpg') }}" class="card-img-top" alt="Resort Hotel">
+                <div class="card-body">
+                    <h5 class="card-title">Best Western Plus</h5>
+                    <p class="card-text">A perfect blend of comfort and convenience with excellent amenities and central location.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">From $100/night</span>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename='images/hotel-8.jpg') }}" class="card-img-top" alt="Luxury Resort">
+                <div class="card-body">
+                    <h5 class="card-title">Golden Tulip Kumasi City</h5>
+                    <p class="card-text">Experience luxury in the heart of Kumasi with modern amenities and exceptional hospitality.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">From $160/night</span>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename='images/beach-3.jpg') }}" class="card-img-top" alt="Beachfront Resort" style="height: 200px; width: 100%; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Elmina Beach Resort</h5>
+                    <p class="card-text">Stunning beachfront resort offering a perfect blend of relaxation and adventure.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">From $140/night</span>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename='images/kakum national park.jpg') }}" class="card-img-top" alt="Kakum National Park" style="height: 200px; width: 100%; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Kakum National Park Lodge</h5>
+                    <p class="card-text">Experience nature at its finest with comfortable accommodations near the famous canopy walkway.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">From $90/night</span>
+                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+</style>
+{% endblock %} 

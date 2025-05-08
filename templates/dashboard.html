@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Explore Ghana{% endblock %}
+
+{% block content %}
+<div class="dashboard-header mb-4">
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    <p class="lead">Manage your travel plans and preferences</p>
+</div>
+
+<div class="row g-4">
+    <!-- User Profile Card -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Profile Information</h5>
+                <div class="mb-3">
+                    <strong>Username:</strong> {{ current_user.username }}
+                </div>
+                <div class="mb-3">
+                    <strong>Email:</strong> {{ current_user.email }}
+                </div>
+                <div class="mb-3">
+                    <strong>Member Since:</strong> {{ current_user.created_at.strftime('%B %d, %Y') }}
+                </div>
+                <button class="btn btn-primary">Edit Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Quick Actions</h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="d-grid">
+                            <a href="{{ url_for('itinerary') }}" class="btn btn-outline-primary">
+                                <i class="fas fa-route me-2"></i>View Itinerary
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-grid">
+                            <a href="{{ url_for('accommodations') }}" class="btn btn-outline-primary">
+                                <i class="fas fa-hotel me-2"></i>Book Accommodation
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-grid">
+                            <a href="{{ url_for('transportation') }}" class="btn btn-outline-primary">
+                                <i class="fas fa-car me-2"></i>Arrange Transport
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-grid">
+                            <a href="{{ url_for('events') }}" class="btn btn-outline-primary">
+                                <i class="fas fa-calendar me-2"></i>Browse Events
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Saved Destinations -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Saved Destinations</h5>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Cape Coast Castle</h6>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Historic castle with stunning ocean views</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Kakum National Park</h6>
+                            <small>1 week ago</small>
+                        </div>
+                        <p class="mb-1">Canopy walkway through tropical rainforest</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upcoming Events -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Upcoming Events</h5>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Accra Food Festival</h6>
+                            <small>Next month</small>
+                        </div>
+                        <p class="mb-1">Experience local cuisine and culture</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Traditional Dance Workshop</h6>
+                            <small>2 weeks from now</small>
+                        </div>
+                        <p class="mb-1">Learn traditional Ghanaian dance moves</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Travel Tips -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Travel Tips</h5>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-suitcase-rolling fa-2x me-3"></i>
+                            <div>
+                                <h6>Best Time to Visit</h6>
+                                <p class="mb-0">October to March offers the best weather</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-money-bill-wave fa-2x me-3"></i>
+                            <div>
+                                <h6>Currency</h6>
+                                <p class="mb-0">Ghanaian Cedi (GHS) is the local currency</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-language fa-2x me-3"></i>
+                            <div>
+                                <h6>Language</h6>
+                                <p class="mb-0">English is widely spoken</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

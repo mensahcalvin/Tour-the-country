@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Map{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Interactive Map of Ghana</h1>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div id="map" style="height: 500px; width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Points of Interest</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action" onclick="showLocation('accra')">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Accra</h6>
+                                <small class="text-muted">Capital City</small>
+                            </div>
+                            <p class="mb-1">Ghana's capital and largest city</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="showLocation('kumasi')">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Kumasi</h6>
+                                <small class="text-muted">Ashanti Region</small>
+                            </div>
+                            <p class="mb-1">Cultural capital of the Ashanti Kingdom</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="showLocation('cape-coast')">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Cape Coast</h6>
+                                <small class="text-muted">Central Region</small>
+                            </div>
+                            <p class="mb-1">Historic city with colonial castles</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="showLocation('tamale')">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Tamale</h6>
+                                <small class="text-muted">Northern Region</small>
+                            </div>
+                            <p class="mb-1">Largest city in northern Ghana</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Search Location</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="searchLocation" placeholder="Enter location">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function initMap() {
+    // Center the map on Ghana
+    const ghana = { lat: 7.9465, lng: -1.0232 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 7,
+        center: ghana,
+    });
+    
+    // Add markers for major cities
+    const cities = {
+        'accra': { lat: 5.6037, lng: -0.1870 },
+        'kumasi': { lat: 6.7000, lng: -1.6167 },
+        'cape-coast': { lat: 5.1315, lng: -1.2795 },
+        'tamale': { lat: 9.4000, lng: -0.8500 }
+    };
+    
+    // Create markers for each city
+    for (const [city, coords] of Object.entries(cities)) {
+        new google.maps.Marker({
+            position: coords,
+            map: map,
+            title: city.charAt(0).toUpperCase() + city.slice(1)
+        });
+    }
+}
+
+function showLocation(city) {
+    // This function would be implemented to show the selected location on the map
+    console.log('Showing location:', city);
+}
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+</script>
+{% endblock %} 

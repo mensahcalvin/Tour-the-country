@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Ghana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        
+            <a class="navbar-brand" href="{{ url_for('home') }}">Explore Ghana</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-primary" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'destinations' %}active{% endif %}" href="{{ url_for('destinations') }}">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'accommodations' %}active{% endif %}" href="{{ url_for('accommodations') }}">Accommodations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'transportation' %}active{% endif %}" href="{{ url_for('transportation') }}">Transportation</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+                            <li>
+                                <a class="dropdown-item {% if request.endpoint == 'events' %}active{% endif %}" href="{{ url_for('events') }}">Events</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {% if request.endpoint == 'itinerary' %}active{% endif %}" href="{{ url_for('itinerary') }}">Itinerary</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {% if request.endpoint == 'map' %}active{% endif %}" href="{{ url_for('map') }}">Map</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {% if request.endpoint == 'blog' %}active{% endif %}" href="{{ url_for('blog') }}">Blog</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {% if request.endpoint == 'about' %}active{% endif %}" href="{{ url_for('about') }}">About</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="container-fluid">
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                  </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <footer class="footer mt-5" style=" color: var(--text-color);">
+        
+
+        <div class="bottom-footer py-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <h4 class="mb-4">Explore Ghana</h4>
+                        <p class="mb-4">Discover the heart of West Africa through our curated travel experiences. From golden beaches to vibrant culture, let us guide your journey.</p>
+                        <div class="social-links">
+                            <a href="#" class="me-3" style="color: var(--text-color); font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="me-3" style="color: var(--text-color); font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="me-3" style="color: var(--text-color); font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="me-3" style="color: var(--text-color); font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="me-3" style="color: var(--text-color); font-size: 1.2rem;"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-2 col-md-4">
+                        <h5 class="mb-4">Explore</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li class="mb-3"><a href="{{ url_for('destinations') }}" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">Popular Destinations</a></li>
+                            <li class="mb-3"><a href="{{ url_for('events') }}" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">Cultural Events</a></li>
+                            <li class="mb-3"><a href="{{ url_for('accommodations') }}" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">Hotels & Resorts</a></li>
+                            <li class="mb-3"><a href="{{ url_for('transportation') }}" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">Getting Around</a></li>
+                            <li class="mb-3"><a href="{{ url_for('blog') }}" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">Travel Blog</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="col-lg-2 col-md-4">
+                        <h5 class="mb-4">Support</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li class="mb-3"><a href="#" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">Help Center</a></li>
+                            <li class="mb-3"><a href="#" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">Travel Insurance</a></li>
+                            <li class="mb-3"><a href="#" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">Safety Tips</a></li>
+                            <li class="mb-3"><a href="#" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">FAQs</a></li>
+                            <li class="mb-3"><a href="#" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">Contact Us</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="col-lg-4 col-md-4">
+                        <h5 class="mb-4">Stay Connected</h5>
+                        <div class="contact-info mb-4">
+                            <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>123 Tourism Street, Accra, Ghana</p>
+                            <p class="mb-2"><i class="fas fa-phone me-2"></i>+233 20 123 4567</p>
+                            <p class="mb-2"><i class="fas fa-envelope me-2"></i>hello@exploreghana.com</p>
+                        </div>
+                        <div class="newsletter">
+                            <h6 class="mb-3">Get Travel Updates</h6>
+                            <form class="d-flex gap-2">
+                                <input type="email" class="form-control" placeholder="Your email address" required>
+                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0">&copy; 2024 Explore Ghana. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <a href="#" style="color: var(--text-color); text-decoration: none; margin-left: 15px; font-size: 0.9rem;">Privacy Policy</a>
+                        <a href="#" style="color: var(--text-color); text-decoration: none; margin-left: 15px; font-size: 0.9rem;">Terms of Service</a>
+                        <a href="#" style="color: var(--text-color); text-decoration: none; margin-left: 15px; font-size: 0.9rem;">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/647dc61d7b.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            const icon = themeToggle.querySelector('i');
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                html.setAttribute('data-bs-theme', savedTheme);
+                updateIcon(savedTheme);
+            }
+
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+                html.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon(newTheme);
+            });
+
+            function updateIcon(theme) {
+                icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            }
+        });
+    </script>
+</body>
+</html>

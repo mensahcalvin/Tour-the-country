@@ -1,0 +1,458 @@
+{% extends "base.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero-section text-center py-5 mb-5 bg-light rounded">
+        <h1 class="display-4 mb-3">Explore Ghana Blog</h1>
+        <p class="lead">Share your experiences and read about others' adventures in Ghana.</p>
+    </div>
+
+     <!-- Places to Explore Section -->
+     <div class="places-to-explore mt-5">
+        <h3 class="text-center mb-4">Places to Explore in Ghana</h3>
+        
+        <!-- Search and Filter for Places -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="placeSearch" placeholder="Search places...">
+                    <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <select class="form-select" id="placeTypeFilter">
+                    <option value="">All Types</option>
+                    <option value="beach">Beaches</option>
+                    <option value="mountain">Mountains</option>
+                    <option value="forest">Forests</option>
+                    <option value="historical">Historical Sites</option>
+                    <option value="cultural">Cultural Sites</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Featured Places -->
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+            <div class="col">
+                <div class="card h-100 place-card">
+                    <img src="{{ url_for('static', filename='images/musum.jpg') }}" 
+                         class="card-img-top" 
+                         alt="Cape Coast Castle"
+                         style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Musuum</h5>
+                        <p class="card-text">A UNESCO World Heritage Site, this castle was a major slave trading post.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">Historical</span>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#capeCoastModal">
+                                Explore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 place-card">
+                    <img src="{{ url_for('static', filename='images/kakum national park.jpg') }}" 
+                         class="card-img-top" 
+                         alt="Kakum National Park"
+                         style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Kakum National Park</h5>
+                        <p class="card-text">Famous for its canopy walkway through the rainforest.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success">Forest</span>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#kakumModal">
+                                Explore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 place-card">
+                    <img src="{{ url_for('static', filename='images/mole-national-park.jpg') }}" 
+                         class="card-img-top" 
+                         alt="Mole National Park"
+                         style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Mole National Park</h5>
+                        <p class="card-text">Ghana's largest wildlife refuge, home to elephants and antelopes.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success">Wildlife</span>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#moleModal">
+                                Explore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Place Modals -->
+        <div class="modal fade" id="capeCoastModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cape Coast Castle</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="{{ url_for('static', filename='images/places/cape-coast.jpg') }}" 
+                                     class="img-fluid rounded" 
+                                     alt="Cape Coast Castle">
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Location</h6>
+                                <p>Cape Coast, Central Region</p>
+                                <h6>Description</h6>
+                                <p>A UNESCO World Heritage Site, this castle was a major slave trading post during the transatlantic slave trade.</p>
+                                <h6>Features</h6>
+                                <ul>
+                                    <li>Historical museum</li>
+                                    <li>Dungeons</li>
+                                    <li>Ocean view</li>
+                                    <li>Guided tours</li>
+                                </ul>
+                                <h6>Best Time to Visit</h6>
+                                <p>November to March</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add to Itinerary</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Similar modals for other places -->
+        <div class="modal fade" id="kakumModal" tabindex="-1">
+            <img src="{{ url_for('static', filename='images/kakum national park.jpg') }}" class="img-fluid rounded" alt="Kakum National Park">
+            <!-- Modal content for Kakum National Park -->
+        </div>
+
+        <div class="modal fade" id="moleModal" tabindex="-1">
+            <img src="{{ url_for('static', filename='images/mole-national-park.jpg') }}" class="img-fluid rounded" alt="Mole National Park">
+            <!-- Modal content for Mole National Park -->
+        </div>
+
+        <!-- Map Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Explore Ghana Map</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="ghanaMap" style="height: 400px; background-color: #f8f9fa;">
+                            <!-- Map will be loaded here -->
+                            <div class="text-center p-5">
+                                <h6>Interactive Map Coming Soon</h6>
+                                <p class="text-muted">Explore Ghana's attractions on an interactive map</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="input-group">
+                <input type="text" class="form-control" id="blogSearch" placeholder="Search blog posts...">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="culture">Culture</option>
+                <option value="food">Food</option>
+                <option value="adventure">Adventure</option>
+                <option value="history">History</option>
+                <option value="nature">Nature</option>
+                <option value="events">Events</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            {% if current_user.is_authenticated %}
+            <div class="mb-4">
+                <a href="{{ url_for('new_post') }}" class="btn btn-primary">Create New Post</a>
+            </div>
+            {% endif %}
+
+            <!-- Featured Post -->
+            {% if posts %}
+            <div class="featured-post mb-4">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img src="{{ posts[0].image_url or 'https://via.placeholder.com/600x400' }}" class="img-fluid rounded-start h-100" alt="{{ posts[0].title }}">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="badge bg-primary me-2">Featured</span>
+                                    <small class="text-muted">{{ posts[0].date_posted.strftime('%B %d, %Y') }}</small>
+                                </div>
+                                <h2 class="card-title">{{ posts[0].title }}</h2>
+                                <p class="card-text">{{ posts[0].content[:200] }}...</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ posts[0].author.avatar_url or 'https://via.placeholder.com/40' }}" class="rounded-circle me-2" width="40" height="40" alt="Author">
+                                        <span>{{ posts[0].author.username }}</span>
+                                    </div>
+                                    <a href="{{ url_for('post', post_id=posts[0].id) }}" class="btn btn-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            
+            <!-- Blog Posts -->
+            {% for post in posts[1:] %}
+            <div class="card mb-4 blog-card">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ post.image_url or 'https://via.placeholder.com/300x200' }}" class="img-fluid rounded-start h-100" alt="{{ post.title }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="badge bg-primary me-2">{{ post.category }}</span>
+                                <small class="text-muted">{{ post.date_posted.strftime('%B %d, %Y') }}</small>
+                            </div>
+                            <h2 class="card-title">{{ post.title }}</h2>
+                            <p class="card-text">{{ post.content[:200] }}...</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ url_for('static', filename='images/musum.jpg') }}" class="rounded-circle me-2" width="30" height="30" alt="Author">
+                                    <span>{{ post.author.username }}</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="me-2"><i class="far fa-eye"></i> {{ post.views }}</span>
+                                    <span><i class="far fa-comment"></i> {{ post.comments|length }}</span>
+                                </div>
+                            </div>
+                            <a href="{{ url_for('post', post_id=post.id) }}" class="btn btn-outline-primary mt-3">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Pagination -->
+            <nav aria-label="Blog pagination" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="col-md-4">
+            <!-- Tourism News (Existing) -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Tourism News</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">New Tourist Attraction Opens</h6>
+                                <small class="text-muted">3 days ago</small>
+                            </div>
+                            <p class="mb-1">A new cultural center has opened in Kumasi...</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Tourism Awards 2024</h6>
+                                <small class="text-muted">1 week ago</small>
+                            </div>
+                            <p class="mb-1">Ghana wins Best Tourism Destination in Africa...</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">New Flight Routes</h6>
+                                <small class="text-muted">2 weeks ago</small>
+                            </div>
+                            <p class="mb-1">Direct flights from New York to Accra announced...</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Popular Topics (Existing) -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Popular Topics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary">Culture</span>
+                        <span class="badge bg-primary">Food</span>
+                        <span class="badge bg-primary">Adventure</span>
+                        <span class="badge bg-primary">History</span>
+                        <span class="badge bg-primary">Nature</span>
+                        <span class="badge bg-primary">Events</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Section (New) -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Subscribe to Newsletter</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Get the latest travel tips and updates directly in your inbox</p>
+                    <form class="mt-3">
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1200x400');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 0;
+    border-radius: 10px;
+}
+
+.blog-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.featured-post .card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.featured-post img {
+    object-fit: cover;
+}
+
+.badge {
+    padding: 0.5em 1em;
+}
+
+.form-control, .form-select {
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.pagination .page-link {
+    border-radius: 5px;
+    margin: 0 2px;
+}
+
+.list-group-item {
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+</style>
+
+<script>
+// Search functionality
+document.getElementById('blogSearch').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const posts = document.querySelectorAll('.blog-card');
+    
+    posts.forEach(post => {
+        const title = post.querySelector('.card-title').textContent.toLowerCase();
+        const content = post.querySelector('.card-text').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || content.includes(searchTerm)) {
+            post.style.display = '';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+});
+
+// Category filter
+document.getElementById('categoryFilter').addEventListener('change', function(e) {
+    const category = e.target.value;
+    const posts = document.querySelectorAll('.blog-card');
+    
+    posts.forEach(post => {
+        const postCategory = post.querySelector('.badge').textContent.toLowerCase();
+        
+        if (category === '' || postCategory === category) {
+            post.style.display = '';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+});
+
+// Newsletter form submission
+document.querySelector('.card form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value;
+    
+    // Here you would typically send the email to your server
+    alert('Thank you for subscribing!');
+    this.reset();
+});
+</script>
+{% endblock %} 

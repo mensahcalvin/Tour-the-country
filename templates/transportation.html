@@ -1,0 +1,449 @@
+{% extends "base.html" %}
+
+{% block title %}Transportation{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero-section text-center py-5 mb-5 bg-secondary rounded">
+        <h1 class="display-4 mb-3">Transportation in Ghana</h1>
+        <p class="lead">Discover the best ways to travel around Ghana with our comprehensive transportation guide</p>
+    </div>
+
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Transportation Types -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Transportation Options</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row g-4">
+                        <!-- Trotro -->
+                        <div class="col-md-6">
+                            <div class="transport-card h-100">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Trotro (Minibus)</h5>
+                                        <p class="card-text">The most common and affordable way to travel within cities.</p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-money-bill-wave me-2"></i>Cost: 2-10 GHC</li>
+                                            <li><i class="fas fa-clock me-2"></i>Hours: 5:00 AM - 10:00 PM</li>
+                                            <li><i class="fas fa-info-circle me-2"></i>Best for: Short distances</li>
+                                        </ul>
+                                        <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#trotroModal">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Taxi -->
+                        <div class="col-md-6">
+                            <div class="transport-card h-100">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Taxi</h5>
+                                        <p class="card-text">Convenient and comfortable for direct point-to-point travel.</p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-money-bill-wave me-2"></i>Cost: 20-100 GHC</li>
+                                            <li><i class="fas fa-clock me-2"></i>Available: 24/7</li>
+                                            <li><i class="fas fa-info-circle me-2"></i>Best for: Comfortable travel</li>
+                                        </ul>
+                                        <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#taxiModal">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Intercity Bus -->
+                        <div class="col-md-6">
+                            <div class="transport-card h-100">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Intercity Bus</h5>
+                                        <p class="card-text">Comfortable long-distance travel between major cities.</p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-money-bill-wave me-2"></i>Cost: 30-150 GHC</li>
+                                            <li><i class="fas fa-clock me-2"></i>Hours: 5:00 AM - 8:00 PM</li>
+                                            <li><i class="fas fa-info-circle me-2"></i>Best for: Long distances</li>
+                                        </ul>
+                                        <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#busModal">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Train -->
+                        <div class="col-md-6">
+                            <div class="transport-card h-100">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Train</h5>
+                                        <p class="card-text">Scenic rail travel between major cities.</p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-money-bill-wave me-2"></i>Cost: 20-80 GHC</li>
+                                            <li><i class="fas fa-clock me-2"></i>Hours: Varies by route</li>
+                                            <li><i class="fas fa-info-circle me-2"></i>Best for: Scenic travel</li>
+                                        </ul>
+                                        <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#trainModal">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Route Planner -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Route Planner</h4>
+                </div>
+                <div class="card-body">
+                    <form id="routeForm" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="fromLocation" class="form-label">From</label>
+                                <input type="text" class="form-control" id="fromLocation" placeholder="Enter starting point" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="toLocation" class="form-label">To</label>
+                                <input type="text" class="form-control" id="toLocation" placeholder="Enter destination" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="transportType" class="form-label">Transport Type</label>
+                                <select class="form-select" id="transportType" required>
+                                    <option value="">Select transport type</option>
+                                    <option value="trotro">Trotro (Minibus)</option>
+                                    <option value="taxi">Taxi</option>
+                                    <option value="bus">Intercity Bus</option>
+                                    <option value="train">Train</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="date" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="date" required>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary">Plan Route</button>
+                        </div>
+                    </form>
+                    <div id="routeResults" class="mt-3 d-none">
+                        <div class="alert alert-info">
+                            <h6>Suggested Routes</h6>
+                            <div id="suggestedRoutes"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Fare Calculator -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Fare Calculator</h4>
+                </div>
+                <div class="card-body">
+                    <form id="fareCalculator" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="calcTransportType" class="form-label">Transport Type</label>
+                            <select class="form-select" id="calcTransportType" required>
+                                <option value="">Select transport type</option>
+                                <option value="trotro">Trotro (Minibus)</option>
+                                <option value="taxi">Taxi</option>
+                                <option value="bus">Intercity Bus</option>
+                                <option value="train">Train</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="distance" class="form-label">Distance (km)</label>
+                            <input type="number" class="form-control" id="distance" min="0" step="0.1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="passengers" class="form-label">Number of Passengers</label>
+                            <input type="number" class="form-control" id="passengers" min="1" value="1" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Calculate Fare</button>
+                    </form>
+                    <div id="fareResult" class="mt-3 d-none">
+                        <div class="alert alert-success">
+                            <h6>Estimated Fare</h6>
+                            <p id="estimatedFare" class="mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Status -->
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Real-time Status</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="statusTransportType" class="form-label">Select Transport Type</label>
+                        <select class="form-select" id="statusTransportType" onchange="updateTransportStatus(this.value)">
+                            <option value="">Select transport type</option>
+                            <option value="trotro">Trotro (Minibus)</option>
+                            <option value="bus">Intercity Bus</option>
+                            <option value="train">Train</option>
+                        </select>
+                    </div>
+                    <div id="transportStatus">
+                        <div class="alert alert-info">
+                            <h6>Current Status</h6>
+                            <p class="mb-0">Select a transport type to view real-time status.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="trotroModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Trotro (Minibus) Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Overview</h6>
+                <p>Trotros are the most common form of public transportation in Ghana. They are minibuses that operate on fixed routes and are known for their affordability and availability.</p>
+                
+                <h6>Key Features</h6>
+                <ul>
+                    <li>Most affordable transport option</li>
+                    <li>Extensive network covering most areas</li>
+                    <li>Frequent departures (every 5-15 minutes)</li>
+                    <li>Shared rides with other passengers</li>
+                </ul>
+
+                <h6>Tips</h6>
+                <ul>
+                    <li>Have small change ready for payment</li>
+                    <li>Ask locals for help with routes</li>
+                    <li>Be prepared for crowded conditions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Similar modals for other transport types -->
+<div class="modal fade" id="taxiModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Taxi Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Overview</h6>
+                <p>Taxis provide convenient and comfortable point-to-point transportation throughout Ghana.</p>
+                
+                <h6>Key Features</h6>
+                <ul>
+                    <li>Available 24/7</li>
+                    <li>Direct routes to your destination</li>
+                    <li>Can be hailed or booked via app</li>
+                    <li>More comfortable than public transport</li>
+                </ul>
+
+                <h6>Tips</h6>
+                <ul>
+                    <li>Negotiate fare before starting journey</li>
+                    <li>Use reputable taxi services</li>
+                    <li>Share taxi for better rates</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+
+// Route Planner
+document.getElementById('routeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fromLocation = document.getElementById('fromLocation').value;
+    const toLocation = document.getElementById('toLocation').value;
+    const transportType = document.getElementById('transportType').value;
+    const date = document.getElementById('date').value;
+    
+    if (!fromLocation || !toLocation || !transportType || !date) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    const routeResults = document.getElementById('routeResults');
+    const suggestedRoutes = document.getElementById('suggestedRoutes');
+    
+    routeResults.classList.remove('d-none');
+    suggestedRoutes.innerHTML = `
+        <div class="mb-2">
+            <strong>Route 1:</strong> ${fromLocation} → ${toLocation} via ${transportType}<br>
+            <small class="text-muted">Estimated time: 45 minutes</small>
+        </div>
+        <div class="mb-2">
+            <strong>Route 2:</strong> ${fromLocation} → ${toLocation} via alternative ${transportType} route<br>
+            <small class="text-muted">Estimated time: 55 minutes</small>
+        </div>
+    `;
+});
+
+// Fare Calculator
+document.getElementById('fareCalculator').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const transportType = document.getElementById('calcTransportType').value;
+    const distance = parseFloat(document.getElementById('distance').value);
+    const passengers = parseInt(document.getElementById('passengers').value);
+    
+    if (!transportType || !distance || !passengers) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    let baseFare = 0;
+    switch(transportType) {
+        case 'trotro':
+            baseFare = 2 + (distance * 0.5);
+            break;
+        case 'taxi':
+            baseFare = 20 + (distance * 1.5);
+            break;
+        case 'bus':
+            baseFare = 30 + (distance * 0.8);
+            break;
+        case 'train':
+            baseFare = 20 + (distance * 0.6);
+            break;
+    }
+    
+    const totalFare = baseFare * passengers;
+    const fareResult = document.getElementById('fareResult');
+    const estimatedFare = document.getElementById('estimatedFare');
+    
+    fareResult.classList.remove('d-none');
+    estimatedFare.textContent = `Total fare: ${totalFare.toFixed(2)} GHC`;
+});
+
+// Real-time Status
+function updateTransportStatus(type) {
+    const statusDiv = document.getElementById('transportStatus');
+    let status = '';
+    
+    switch(type) {
+        case 'trotro':
+            status = `
+                <div class="alert alert-success">
+                    <h6>Trotro Status</h6>
+                    <p class="mb-0">Normal operations. Average waiting time: 5-10 minutes.</p>
+                </div>
+            `;
+            break;
+        case 'bus':
+            status = `
+                <div class="alert alert-warning">
+                    <h6>Bus Status</h6>
+                    <p class="mb-0">Minor delays reported. Next bus in 15 minutes.</p>
+                </div>
+            `;
+            break;
+        case 'train':
+            status = `
+                <div class="alert alert-info">
+                    <h6>Train Status</h6>
+                    <p class="mb-0">On schedule. Next departure in 30 minutes.</p>
+                </div>
+            `;
+            break;
+        default:
+            status = `
+                <div class="alert alert-info">
+                    <h6>Current Status</h6>
+                    <p class="mb-0">Select a transport type to view real-time status.</p>
+                </div>
+            `;
+    }
+    
+    statusDiv.innerHTML = status;
+}
+</script>
+
+<style>
+.hero-section {
+    /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https:'); */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 0;
+    border-radius: 10px;
+}
+
+.transport-card {
+    transition: transform 0.3s ease;
+}
+
+.transport-card:hover {
+    transform: translateY(-5px);
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 10px;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.form-control, .form-select {
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.alert {
+    border-radius: 5px;
+}
+</style>
+{% endblock %} 
