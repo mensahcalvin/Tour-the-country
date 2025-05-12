@@ -24,6 +24,9 @@ body {
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
     padding-top: 50px; /* Adjusted to account for navbar height */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container{
@@ -409,4 +412,94 @@ footer {
     color: #007bff;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
+}
+
+main {
+    flex: 1;
+}
+
+/* Card Styles */
+.card {
+    transition: transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+.footer {
+    margin-top: auto;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+/* Alert Messages */
+.alert {
+    margin-bottom: 1rem;
+}
+
+/* Form Styles */
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Profile Styles */
+.profile-header {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Post Styles */
+.post-content {
+    line-height: 1.8;
+}
+
+.post-meta {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Comment Styles */
+.comment {
+    border-left: 3px solid #007bff;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.comment-reply {
+    margin-left: 2rem;
 } 

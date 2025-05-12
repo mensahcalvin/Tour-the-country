@@ -9,7 +9,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('blog.home'))
     
     if request.method == 'POST':
         username = request.form.get('username')
@@ -62,7 +62,7 @@ def register():
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('blog.home'))
     
     if request.method == 'POST':
         username = request.form.get('username')
@@ -74,7 +74,7 @@ def login():
         if user and user.check_password(password):
             login_user(user, remember=remember)
             next_page = request.args.get('next')
-            return redirect(next_page or url_for('home'))
+            return redirect(next_page or url_for('blog.home'))
         
         flash('Invalid username or password', 'error')
         return redirect(url_for('auth.login'))
@@ -85,7 +85,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('blog.home'))
 
 @auth.route('/profile')
 @login_required

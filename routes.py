@@ -8,6 +8,22 @@ from slugify import slugify
 
 blog = Blueprint('blog', __name__)
 
+@blog.route('/')
+def home():
+    # Get featured posts
+    featured_posts = Post.query.filter_by(is_published=True).order_by(Post.views.desc()).limit(3).all()
+    
+    # Get recent posts
+    recent_posts = Post.query.filter_by(is_published=True).order_by(Post.date_posted.desc()).limit(6).all()
+    
+    # Get categories with post counts
+    categories = Category.query.join(Post).group_by(Category.id).all()
+    
+    return render_template('home.html',
+                         featured_posts=featured_posts,
+                         recent_posts=recent_posts,
+                         categories=categories)
+
 # Blog listing page
 @blog.route('/blog')
 def blog_list():
